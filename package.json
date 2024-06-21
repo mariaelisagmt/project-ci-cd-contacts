@@ -1,0 +1,26 @@
+{
+  "name": "ci-cd-calculadora",
+  "version": "1.0.0",
+  "description": "Calculadora simples para testar pipeline CI/CD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcomateus/ci-cd-mba-engenharia-software.git"
+  },
+  "keywords": [
+    "calculadora",
+    "ci/cd"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fcomateus/ci-cd-mba-engenharia-software/issues"
+  },
+  "homepage": "https://github.com/fcomateus/ci-cd-mba-engenharia-software#readme",
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  }
+}
