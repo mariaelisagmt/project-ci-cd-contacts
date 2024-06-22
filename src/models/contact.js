@@ -1,14 +1,14 @@
-class Contact {
+class Contato {
 
-    constructor(name, phone, email) {
-        this.name = name;
-        this.phone = phone;
+    constructor(nome, telefone, email) {
+        this.nome = nome;
+        this.telefone = telefone;
         this.email = email;
     }
 
     showDetails() {
-        console.log(`Name: ${this.name}`);
-        console.log(`Phone: ${this.phone}`);
+        console.log(`Nome: ${this.nome}`);
+        console.log(`Telefone: ${this.telefone}`);
         console.log(`E-mail: ${this.email}`);
         console.log('------------------------');
     }
