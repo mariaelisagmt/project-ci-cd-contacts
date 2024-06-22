@@ -2,9 +2,9 @@ name: Pipeline Workflow
 
 on:
   push:
-    branches: "main"
+    branches: "dev"
   pull_request:
-    branches: "main"
+    branches: "dev"
 
 jobs:
   build-and-test:
@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Lint code
-        run: npm run lint
+        run: npx eslint . --ext .js 
 
       - name: Run tests
         run: npm test
