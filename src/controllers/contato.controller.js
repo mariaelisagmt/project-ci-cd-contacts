@@ -10,15 +10,20 @@
 
 const contatoService = require('../services/contato.service');
 
-const get = function(req, res){
-    res.send(contatoService.get(req.params._id));
+const get = async function(req, res){
+    res.send(await contatoService.get( req.params._id));
 }
 
-const getAll = function(req, res){
-    res.send(contatoService.getAll());
+const getAll = async function(req, res){
+    res.send(await contatoService.getAll());
+}
+
+const insertContato = function(req, res){
+    res.send(contatoService.insertContato(req.params.nome, req.params.telefone, req.params.email));
 }
 
 module.exports = {
     get,
-    getAll
+    getAll,
+    insertContato
 };

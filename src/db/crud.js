@@ -1,5 +1,5 @@
-function createContact(name, phone, email) {
-    let newContact = new Contato(name, phone, email);
+function createContact(nome, telefone, email) {
+    let newContact = new Contato(nome, telefone, email);
     contatos.push(newContact);
     console.log("Novo contato criado:");
     newContact.showDetails();

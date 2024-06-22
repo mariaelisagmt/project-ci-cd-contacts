@@ -17,14 +17,14 @@ class Contato {
 
         const query = `
             SELECT
-                nome,
-                telefone,
-                email
+                *
             FROM
                 contatos
             WHERE
-                id = '${id}'
+                _id = '${id}'
         `
+
+        console.log(query);
         const results = await dbConnection.all(query)
         dbConnection.close()
         return results

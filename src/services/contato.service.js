@@ -9,16 +9,25 @@
 */
 
 const data = require('../data');
+const Contato = require('../models/contact');
 
-const get = function(_id){
-    return getAll().find(account => account._id == _id);
+const get = async function(_id){
+    const contatos = new Contato();
+    return (await contatos.getById(_id)).at(0);
 }
 
-const getAll = function(){
-    return data.Contato;
+const getAll = async function(){
+    const contatos = new Contato();
+    return await contatos.list() 
+}
+
+const insertContato = async function(nome, telefone, email){
+    const contatos = new Contato()
+    return await contatos.create(nome, telefone, email)
 }
 
 module.exports = {
     get,
-    getAll
+    getAll,
+    insertContato
 };

@@ -5,10 +5,11 @@ async function createTable() {
     const db = await sqliteConnection()
 
     const query = `
-        CREATE TABLE IF NOT EXISTS contacts (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            phone VARCHAR(13),
-            name VARCHAR(200)
+        CREATE TABLE IF NOT EXISTS contatos (
+            _id INTEGER PRIMARY KEY AUTOINCREMENT,
+            telefone VARCHAR(13),
+            nome VARCHAR(200),
+            email VARCHAR(200)
         )
 
     `
@@ -20,8 +21,8 @@ async function insertData() {
     const db = await sqliteConnection()
     
     const query = `
-        INSERT INTO contacts (phone, name)
-        VALUES ('teste', 'teste')
+        INSERT INTO contatos (telefone, nome, email)
+        VALUES ('99999-9999', 'teste', 'teste@teste')
     `
 
     await db.exec(query)
@@ -32,7 +33,7 @@ async function getData() {
     const db = await sqliteConnection()
 
     const query = `
-        SELECT * FROM contacts
+        SELECT * FROM contatos
     `
 
     const results = await db.all(query)
@@ -40,7 +41,7 @@ async function getData() {
 }
 
 async function run() {
-    // await createTable()
+    await createTable()
     await insertData()
     await getData()
 

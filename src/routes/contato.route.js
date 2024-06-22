@@ -19,4 +19,7 @@ router.route('/')
 router.route('/:_id')
     .get(contatoController.get);
 
+router.route('/:nome/:telefone/:email')
+    .get(contatoController.get);
+
 module.exports = router;
