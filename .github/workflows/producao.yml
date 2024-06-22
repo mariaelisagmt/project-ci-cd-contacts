@@ -33,7 +33,3 @@ jobs:
 
       - name: Build application
         run: npm run build 
-
-
---Adicionar notificador de erro
---Adicionar deploy (cd)
