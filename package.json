@@ -26,6 +26,7 @@
   "homepage": "https://github.com/fcomateus/ci-cd-mba-engenharia-software#readme",
   "dependencies": {
     "sqlite3": "^5.1.7",
+    "sqlite": "^5.1.1",
     "cors": "2.8.5",
     "express": "4.17.1",
     "swagger-ui-express": "4.2.0",
