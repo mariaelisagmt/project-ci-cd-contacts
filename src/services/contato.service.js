@@ -8,26 +8,30 @@
   Copyright IBM Corporation 2020
 */
 
-const data = require('../data');
-const Contato = require('../models/contact');
+class ContatoService {
 
-const get = async function(_id){
-    const contatos = new Contato();
-    return (await contatos.getById(_id)).at(0);
+    repository = null
+
+    constructor(repository) {
+        this.repository = repository
+    }
+
+    get = async function(_id){
+        const contact = await this.repository.getById(_id)
+        return contact
+    }
+    
+    getAll = async function(){
+        return await this.repository.list() 
+    }
+    
+    insertContato = async function(nome, telefone, email) {
+        return await this.repository.create(nome, telefone, email)
+    }
+
+    remove = async function(_id) {
+        return await this.repository.remove(_id)
+    }
 }
 
-const getAll = async function(){
-    const contatos = new Contato();
-    return await contatos.list() 
-}
-
-const insertContato = async function(nome, telefone, email){
-    const contatos = new Contato()
-    return await contatos.create(nome, telefone, email)
-}
-
-module.exports = {
-    get,
-    getAll,
-    insertContato
-};
+module.exports = ContatoService

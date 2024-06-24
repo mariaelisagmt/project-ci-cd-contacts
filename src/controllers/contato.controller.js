@@ -8,22 +8,31 @@
   Copyright IBM Corporation 2020
 */
 
-const contatoService = require('../services/contato.service');
+const ContatoRepository = require('../repository/contact.repository.js')
+const contatoRepository = new ContatoRepository()
 
-const get = async function(req, res){
-    res.send(await contatoService.get( req.params._id));
+const ContatoService = require('../services/contato.service.js');
+const contatoService = new ContatoService(contatoRepository)
+
+class ContatoController {
+
+    get = async function(req, res){
+        res.send(await contatoService.get( req.params._id));
+    }
+    
+    getAll = async function(req, res){
+        res.send(await contatoService.getAll());
+    }
+    
+    insertContato = async function(req, res){
+        const { nome, telefone, email } = req.body
+        res.send(await contatoService.insertContato(nome, telefone, email));
+    }
+
+    remove = async function(req, res) {
+        const { _id } = req.params
+        res.send(await contatoService.remove(_id))
+    }
 }
 
-const getAll = async function(req, res){
-    res.send(await contatoService.getAll());
-}
-
-const insertContato = function(req, res){
-    res.send(contatoService.insertContato(req.params.nome, req.params.telefone, req.params.email));
-}
-
-module.exports = {
-    get,
-    getAll,
-    insertContato
-};
+module.exports = ContatoController

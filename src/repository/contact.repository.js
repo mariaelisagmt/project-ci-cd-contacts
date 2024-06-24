@@ -21,11 +21,10 @@ class Contato {
             FROM
                 contatos
             WHERE
-                _id = '${id}'
+                id = '${id}'
         `
 
-        console.log(query);
-        const results = await dbConnection.all(query)
+        const results = await dbConnection.get(query)
         dbConnection.close()
         return results
     }
@@ -90,15 +89,16 @@ class Contato {
             INSERT INTO contatos (nome, telefone, email)
             VALUES ('${name}', '${phone}', '${email}')
         `
+
         await dbConnection.exec(query)
         dbConnection.close()
     }
 
-    async remove(id) {
+    async remove(_id) {
         const dbConnection = await sqliteConnection()
 
         const query = `
-            DELETE FROM contatos WHERE id = '${id}'
+            DELETE FROM contatos WHERE id = '${_id}'
         `
 
         await dbConnection.exec(query)
