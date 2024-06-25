@@ -90,12 +90,20 @@ class Contato {
             VALUES ('${name}', '${phone}', '${email}')
         `
 
-        await dbConnection.exec(query)
+        await dbConnection.run(query)
+
+        const lastContactInsertedId = await dbConnection.get('SELECT last_insert_rowid() as id')
+        const insertedId = lastContactInsertedId.id
+        const lastInsertedContact = await dbConnection.get(`SELECT * FROM contatos WHERE id = '${insertedId}'`)
+
         dbConnection.close()
+        return lastInsertedContact
     }
 
     async remove(_id) {
         const dbConnection = await sqliteConnection()
+
+        const contact = await this.getById(_id)
 
         const query = `
             DELETE FROM contatos WHERE id = '${_id}'
@@ -103,6 +111,7 @@ class Contato {
 
         await dbConnection.exec(query)
         dbConnection.close()
+        return contact
     }
 
 }
