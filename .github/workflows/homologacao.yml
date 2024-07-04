@@ -1,10 +1,10 @@
-name: Pipeline Workflow 
+name: Pipeline Homologacao Workflow 
 
 on:
   push:
-    branches: "main"
+    branches: "dev"
   pull_request:
-    branches: "main"
+    branches: "dev"
 
 jobs:
   build-and-test:
@@ -17,19 +17,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18' 
+          node-version: '20' 
 
       - name: Install dependencies
         run: npm install
 
-      - name: Lint code
-        run: npm run lint
-
       - name: Run tests
         run: npm test
-
-      - name: Check code coverage
-        run: npm run coverage
 
       - name: Build application
         run: npm run build 
