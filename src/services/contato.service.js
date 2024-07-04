@@ -25,12 +25,16 @@ class ContatoService {
         return await this.repository.list() 
     }
     
-    insertContato = async function(nome, telefone, email) {
+    insertContato = async function(nome, telefone, email){
         return await this.repository.create(nome, telefone, email)
     }
-
-    remove = async function(_id) {
-        return await this.repository.remove(_id)
+    
+    updateContato = async function(_id, nome, telefone, email){
+        return await this.repository.update(_id, nome, telefone, email)
+    }
+    
+    remove = async function(_id){
+        return await this.repository.remove(_id);
     }
 }
 
