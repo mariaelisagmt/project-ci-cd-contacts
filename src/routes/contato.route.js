@@ -10,6 +10,7 @@
 
 const express = require('express');
 const router = express.Router({ mergeParams: true });
+router.use(express.json());
 
 const ContatoController = require('../controllers/contato.controller');
 const contatoController = new ContatoController()
@@ -17,13 +18,16 @@ const contatoController = new ContatoController()
 router.route('/')
     .get(contatoController.getAll);
 
-router.route('/')
-    .post(contatoController.insertContato);
-
 router.route('/:_id')
   .get(contatoController.get);
 
-router.route('/:_id')
-  .delete(contatoController.remove)
+router.route('/inserir')
+  .post(contatoController.insertContato);
+
+router.route('/atualizar/:_id')
+  .post(contatoController.updateContato);
+
+router.route('/remover/:_id')
+  .delete(contatoController.remove);
 
 module.exports = router;

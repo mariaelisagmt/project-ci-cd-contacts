@@ -100,18 +100,28 @@ class Contato {
         return lastInsertedContact
     }
 
-    async remove(_id) {
+    async update(id, name, phone, email) {
+        const dbConnection = await sqliteConnection()
+        const query = `
+            UPDATE contatos 
+            SET nome = '${name}', 
+                telefone = '${phone}', 
+                email = '${email}'
+            WHERE id = '${id}'
+        `
+        await dbConnection.exec(query)
+        dbConnection.close()
+    }
+
+    async remove(id) {
         const dbConnection = await sqliteConnection()
 
-        const contact = await this.getById(_id)
-
         const query = `
-            DELETE FROM contatos WHERE id = '${_id}'
+            DELETE FROM contatos WHERE id = '${id}'
         `
 
         await dbConnection.exec(query)
         dbConnection.close()
-        return contact
     }
 
 }

@@ -24,14 +24,16 @@ class ContatoController {
         res.send(await contatoService.getAll());
     }
     
-    insertContato = async function(req, res){
-        const { nome, telefone, email } = req.body
-        res.send(await contatoService.insertContato(nome, telefone, email));
+    insertContato = function(req, res){
+        res.send(contatoService.insertContato(req.body.nome, req.body.telefone, req.body.email));
     }
-
-    remove = async function(req, res) {
-        const { _id } = req.params
-        res.send(await contatoService.remove(_id))
+    
+    updateContato = function(req, res){
+        res.send(contatoService.updateContato(req.params._id, req.body.nome, req.body.telefone, req.body.email));
+    }
+    
+    remove = async function(req, res){
+        res.send(await contatoService.remove( req.params._id));
     }
 }
 
