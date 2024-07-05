@@ -1,8 +1,6 @@
-name: Pipeline Producao Workflow 
+name: Workflow Producao  
 
 on:
-  push:
-    branches: "main"
   pull_request:
     branches: "main"
 

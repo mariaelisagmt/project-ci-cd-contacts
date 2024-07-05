@@ -1,4 +1,4 @@
-name: Pipeline Homologacao Workflow 
+name: Workflow Homologacao 
 
 on:
   push:
