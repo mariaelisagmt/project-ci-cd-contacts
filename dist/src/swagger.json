@@ -1,0 +1,80 @@
+{
+  "swagger":"2.0"
+  ,"info":{"description":"Lista Contatos API"
+  ,"version":"1.0"
+  ,"title":"Lista Contatos API"}
+  ,"host":"localhost:18000"
+  ,"basePath":"/"
+  ,"tags":[{"name":"Contato","description":"Contato API"}]
+  ,"schemes":["http"]
+  ,"produces": ["application/json"],
+  "paths": {
+    "/contato": {
+      "get": {
+        "x-swagger-router-controller": "contato",
+        "operationId": "getAllContatos",
+        "tags": ["Contatos"],
+        "summary": "Get all contatos",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Get all contatos",
+            "schema": {
+              "$ref": "#/definitions/ArrayOfContatos"
+            }
+          }
+        }
+      }
+    },
+    "/contato/{contatoId}": {
+      "get": {
+        "x-swagger-router-controller": "contatos",
+        "operationId": "getDetalheContato",
+        "tags": ["Contatos"],
+        "summary": "Get contato by id",
+        "parameters": [ {
+          "name": "contatoId",
+          "in": "path",
+          "type": "number",
+          "required": true
+        }],
+        "responses": {
+          "200": {
+            "description": "Get contato by id",
+            "schema": {
+              "$ref": "#/definitions/Contato"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions":{
+    "Contato": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": 0
+        },
+        "nome": {
+          "type": "string",
+          "example":"Teste"
+        },
+        "email": {
+          "type": "string",
+          "example":"teste@teste.com"
+        },
+        "telefone": {
+          "type": "string",
+          "example":"(99) 99999-9999"
+        }
+      }
+    },
+    "ArrayOfContatos": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Contato"
+      }
+    }
+  }
+}
